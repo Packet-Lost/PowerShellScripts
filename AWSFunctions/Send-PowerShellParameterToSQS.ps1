@@ -1,8 +1,6 @@
 ﻿function Send-PowerShellParameterToSQS
 {
     [CmdletBinding()]
-    [Alias()]
-    [OutputType([int])]
     Param
     (
         [Parameter(Mandatory=$true,

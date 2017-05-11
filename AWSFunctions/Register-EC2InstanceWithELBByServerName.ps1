@@ -1,7 +1,6 @@
 ﻿function Register-EC2InstanceWithELBByServerName
 {
     [CmdletBinding()]
-    [OutputType([int])]
     Param
     (
         [Parameter(Mandatory=$true,

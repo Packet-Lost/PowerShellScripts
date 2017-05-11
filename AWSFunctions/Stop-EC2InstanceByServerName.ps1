@@ -1,7 +1,6 @@
 ﻿function Stop-EC2InstanceByServerName
 {
     [CmdletBinding()]
-    [OutputType([int])]
     Param
     (
         # Array of servernames to stop

@@ -1,7 +1,6 @@
 ﻿function Test-RunningEC2InstanceByServerName
 {
     [CmdletBinding()]
-    [OutputType([int])]
     Param
     (
         [Parameter(Mandatory=$true,

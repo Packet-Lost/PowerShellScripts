@@ -1,7 +1,6 @@
 ﻿function Start-EC2InstanceByServerName
 {
     [CmdletBinding()]
-    [OutputType([int])]
     Param
     (
         [Parameter(Mandatory=$true,
@@ -23,10 +22,12 @@
             {
             $instancetostart = Get-EC2Instance -Filter @{name='tag:Name'; values= "$($servername.ToUpper())"}
             if(!$instancetostart) { throw "Unable to map $servername to an EC2Instance" }
-            Write-Verbose "Starting EC2 Instance $($instancetostart.Instances[0].InstanceId) " 
-            Start-EC2Instance -Instance $instancetostart.Instances[0].InstanceId
-
-            Write-Verbose "$(Get-Date) Waiting $SecondsToPause seconds"
+            if($instancetostart.Instances[0].State.Name.Value -eq "stopped"){
+                Write-Verbose "Starting EC2 Instance $($instancetostart.Instances[0].InstanceId)"
+                Start-EC2Instance -Instance $instancetostart.Instances[0].InstanceId
+            }else{ 
+                Write-Verbose "Not starting EC2 Instance $($instancetostart.Instances[0].InstanceId) because its instance state was not stopped it was detected as $($instancetostart.Instances[0].State.Name.Value)"
+            }
             Start-Sleep -seconds $SecondsToPause
             } 
              

@@ -1,8 +1,6 @@
 ﻿function Start-SQSQueueProccessing
 {
     [CmdletBinding()]
-    [Alias()]
-    [OutputType([int])]
     Param
     (
         [Parameter(Mandatory=$true,

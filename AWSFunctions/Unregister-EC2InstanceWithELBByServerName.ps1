@@ -1,7 +1,6 @@
 ﻿function Unregister-EC2InstanceFromELBByServerName
 {
     [CmdletBinding()]
-    [OutputType([int])]
     Param
     (
         [Parameter(Mandatory=$true,
